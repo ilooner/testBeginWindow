@@ -23,9 +23,8 @@ public class Application implements StreamingApplication
 
     RandomNumberGenerator randomGenerator = dag.addOperator("randomGenerator", RandomNumberGenerator.class);
     randomGenerator.setNumTuples(500);
+    RandomNumberConsumer randomConsumer = dag.addOperator("randomConsumer", RandomNumberConsumer.class);
 
-    ConsoleOutputOperator cons = dag.addOperator("console", new ConsoleOutputOperator());
-
-    dag.addStream("randomData", randomGenerator.out, cons.input).setLocality(Locality.CONTAINER_LOCAL);
+    dag.addStream("randomData", randomGenerator.out, randomConsumer.input);
   }
 }
