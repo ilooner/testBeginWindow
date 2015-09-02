@@ -16,7 +16,7 @@ import java.util.logging.Level;
 
 public class RandomNumberConsumer implements Operator
 {
-  private boolean block = true;
+  private transient boolean block = true;
 
   public final transient DefaultInputPort<Double> input = new DefaultInputPort<Double>()
   {
