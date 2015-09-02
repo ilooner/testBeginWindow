@@ -25,7 +25,7 @@ public class RandomNumberConsumer implements Operator
     {
       if(block) {
         try {
-          this.wait();
+          Thread.sleep(Integer.MAX_VALUE);
         } catch (InterruptedException ex) {
           throw new RuntimeException(ex);
         }
