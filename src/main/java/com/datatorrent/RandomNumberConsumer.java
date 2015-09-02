@@ -12,19 +12,31 @@ import com.datatorrent.api.Operator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.logging.Level;
+
 public class RandomNumberConsumer implements Operator
 {
+  private boolean block = true;
+
   public final transient DefaultInputPort<Double> input = new DefaultInputPort<Double>()
   {
     @Override
     public void process(Double tuple)
     {
+      if(block) {
+        try {
+          this.wait();
+        } catch (InterruptedException ex) {
+          throw new RuntimeException(ex);
+        }
+      }
     }
   };
 
   @Override
   public void beginWindow(long l)
   {
+    block = false;
     LOG.info("Beginning window");
   }
 
