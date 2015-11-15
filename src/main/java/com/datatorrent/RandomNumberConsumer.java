@@ -9,6 +9,8 @@ package com.datatorrent;
 import com.datatorrent.api.Context.OperatorContext;
 import com.datatorrent.api.DefaultInputPort;
 import com.datatorrent.api.Operator;
+import com.google.common.collect.Lists;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +19,8 @@ import java.util.logging.Level;
 public class RandomNumberConsumer implements Operator
 {
   private transient boolean block = true;
+
+  private List<Long> state;
 
   public final transient DefaultInputPort<Double> input = new DefaultInputPort<Double>()
   {
@@ -48,6 +52,13 @@ public class RandomNumberConsumer implements Operator
   @Override
   public void setup(OperatorContext cntxt)
   {
+    if(state == null) {
+      state = Lists.newArrayList();
+
+      for(long counter = 0; counter < 1000000; counter++) {
+        state.add(counter);
+      }
+    }
   }
 
   @Override
