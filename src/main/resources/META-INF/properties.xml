@@ -8,5 +8,9 @@
     <name>dt.operator.randomConsumer.attr.CHECKPOINT_WINDOW_COUNT</name>
     <value>6</value>
   </property>
+  <property>
+    <name>dt.application.*.attr.STREAMING_WINDOW_SIZE_MILLIS</name>
+    <value>50</value>
+  </property>
 </configuration>
 
