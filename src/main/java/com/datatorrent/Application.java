@@ -3,6 +3,7 @@
  */
 package com.datatorrent;
 
+import com.datatorrent.api.Context.OperatorContext;
 import org.apache.hadoop.conf.Configuration;
 
 import com.datatorrent.api.annotation.ApplicationAnnotation;
@@ -24,6 +25,8 @@ public class Application implements StreamingApplication
     RandomNumberGenerator randomGenerator = dag.addOperator("randomGenerator", RandomNumberGenerator.class);
     randomGenerator.setNumTuples(500);
     RandomNumberConsumer randomConsumer = dag.addOperator("randomConsumer", RandomNumberConsumer.class);
+    dag.getMeta(randomConsumer).getAttributes().put(OperatorContext.APPLICATION_WINDOW_COUNT, 6);
+    dag.getMeta(randomConsumer).getAttributes().put(OperatorContext.CHECKPOINT_WINDOW_COUNT, 6);
 
     dag.addStream("randomData", randomGenerator.out, randomConsumer.input);
   }
