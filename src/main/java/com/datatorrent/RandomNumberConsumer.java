@@ -27,13 +27,6 @@ public class RandomNumberConsumer implements Operator
     @Override
     public void process(Double tuple)
     {
-      if(block) {
-        try {
-          Thread.sleep(Integer.MAX_VALUE);
-        } catch (InterruptedException ex) {
-          throw new RuntimeException(ex);
-        }
-      }
     }
   };
 
@@ -47,6 +40,14 @@ public class RandomNumberConsumer implements Operator
   @Override
   public void endWindow()
   {
+    if (block) {
+      LOG.info("Begin window not called");
+      try {
+        Thread.sleep(Integer.MAX_VALUE);
+      } catch (InterruptedException ex) {
+        throw new RuntimeException(ex);
+      }
+    }
   }
 
   @Override
