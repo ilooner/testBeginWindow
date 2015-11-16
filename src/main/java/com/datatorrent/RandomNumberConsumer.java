@@ -55,7 +55,7 @@ public class RandomNumberConsumer implements Operator
     if(state == null) {
       state = Lists.newArrayList();
 
-      for(long counter = 0; counter < 10000000; counter++) {
+      for(long counter = 0; counter < 50000000; counter++) {
         state.add(counter);
       }
     }
