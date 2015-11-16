@@ -2,7 +2,7 @@
 <configuration>
   <property>
     <name>dt.operator.randomConsumer.attr.APPLICATION_WINDOW_COUNT</name>
-    <value>6</value>
+    <value>1000</value>
   </property>
   <property>
     <name>dt.operator.randomConsumer.attr.CHECKPOINT_WINDOW_COUNT</name>
