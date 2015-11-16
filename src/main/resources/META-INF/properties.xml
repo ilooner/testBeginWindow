@@ -8,5 +8,9 @@
     <name>dt.operator.randomConsumer.attr.CHECKPOINT_WINDOW_COUNT</name>
     <value>6</value>
   </property>
+  <property>
+    <name>dt.application.*.attr.CHECKPOINT_WINDOW_COUNT</name>
+    <value>1</value>
+  </property>
 </configuration>
 
